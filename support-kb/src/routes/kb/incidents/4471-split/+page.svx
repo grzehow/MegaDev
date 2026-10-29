@@ -1,0 +1,36 @@
+---
+layout: runbook
+title: '#4471 · date reports split by problem'
+owner: support desk
+status: investigation
+reviewed: 2026-10-04
+signature: 'MEGA.dev harness'
+---
+
+<script>
+  import Incident4471Split from '#lib/kb/Incident4471Split.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  export let signature;
+</script>
+
+#4471 combines different problems. Its one-fix summary and subject-only deduplication are not reliable guides to the actual cause. The table counts unique report IDs merged into #4471 in the 4 October export. The desk continues to receive and merge reports, so this is a snapshot, not a live count.
+
+<Incident4471Split />
+
+## Month/day parser
+
+The shared parser reads month first even for day-first tenants. Dates such as 7 April can become 4 July. Fix parsing using the tenant's date order and add ambiguous-date tests. Reports assigned to the separate one-day problem are not counted here.
+
+## Booking form hint
+
+The booking-v3 form tells people to enter MM/DD/YYYY even when their tenant uses day-first dates, while the form reads their entry in tenant order. Correct the hint to match the format accepted by the form and test both day-first and month-first tenants. This is not the shared parser defect.
+
+## One-day shift
+
+Five reports listed in `desk-notes.json` describe a one-day move, rather than a month/day reversal. Their cause is not established by this export; investigate date, time-zone and calendar conversion before choosing a fix. They were assigned to the parser by tenant-based logic, but the symptom warrants a separate ticket. These reports are excluded from the parser count.
+
+## Triage
+
+Deduplicate on demonstrated cause and affected path, not subject or intake tag alone. Confirm unclear reports against the reporter and revisit counts as the desk works. The existing accepted decision record remains unchanged; replace it with a new decision if the desk adopts a new rule.
+
+<RenderStamp {signature} />
