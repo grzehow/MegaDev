@@ -19,15 +19,15 @@ signature: 'MEGA.dev harness'
 
 ## Month/day parser
 
-The shared parser reads month first even for day-first tenants. Dates such as 7 April can become 4 July. Fix parsing using the tenant's date order and add ambiguous-date tests. Reports assigned to the separate one-day problem are not counted here.
+The shared parser reads month first even for day-first tenants. Dates such as 7 April can become 4 July. Fix parsing using the tenant's date order and add ambiguous-date tests. The five reports the desk read as one-day moves remain counted here, as the export's classification specifies.
 
 ## Booking form hint
 
 The booking-v3 form tells people to enter MM/DD/YYYY even when their tenant uses day-first dates, while the form reads their entry in tenant order. Correct the hint to match the format accepted by the form and test both day-first and month-first tenants. This is not the shared parser defect.
 
-## One-day shift
+## Reports read as one-day moves
 
-Five reports listed in `desk-notes.json` describe a one-day move, rather than a month/day reversal. Their cause is not established by this export; investigate date, time-zone and calendar conversion before choosing a fix. They were assigned to the parser by tenant-based logic, but the symptom warrants a separate ticket. These reports are excluded from the parser count.
+Five reports listed in `desk-notes.json` were read by the desk as one-day moves. The export's classification counts them where filed and footnotes the different reading; they remain in the parser count. Their symptoms merit follow-up, but the export does not establish a separate cause.
 
 ## Triage
 
