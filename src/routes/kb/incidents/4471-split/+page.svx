@@ -4,7 +4,7 @@ title: '#4471 · date reports split by problem'
 owner: support desk
 status: investigation
 reviewed: 2026-10-04
-signature: 'MEGA.dev harness'
+signature: 'v1.eyJzdWIiOiIzMjQzIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMzODExODMsImV4cCI6MTc5MzQ2NzU4M30.J3I-34G5fplZq74hk_eosbbdaSREs02yaFRGWzP6S3E'
 ---
 
 <script>
