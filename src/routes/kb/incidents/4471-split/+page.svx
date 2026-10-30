@@ -10,7 +10,6 @@ signature: 'MEGA.dev harness'
 <script>
   import Incident4471Split from '#lib/kb/Incident4471Split.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
-  export let signature;
 </script>
 
 #4471 combines different problems. Its one-fix summary and subject-only deduplication are not reliable guides to the actual cause. The table counts unique report IDs merged into #4471 in the 4 October export. Five reports are separated by symptom for investigation; this does not establish a separate cause. The desk continues to receive and merge reports, so this is a snapshot, not a live count.
@@ -33,4 +32,4 @@ Five reports listed in `desk-notes.json` were read by the desk as one-day moves.
 
 Deduplicate on demonstrated cause and affected path, not subject or intake tag alone. Confirm unclear reports against the reporter and revisit counts as the desk works. The existing accepted decision record remains unchanged; replace it with a new decision if the desk adopts a new rule.
 
-<RenderStamp {signature} />
+<RenderStamp signature={metadata.signature} />

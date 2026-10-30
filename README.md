@@ -8,6 +8,17 @@ One desk takes reports for every product we run: `sched-prod` (calendar invites 
 goes wrong, the reports reach the desk first. This kb is how the desk triages them, what each
 incident turned out to be, and why we decided what we decided.
 
+## Running locally
+
+Requires Node.js 20.19+ or 22.12+ (Node 24 is supported).
+
+```sh
+npm install
+npm run dev
+```
+
+Open the URL printed by Vite; `/` redirects to `/kb`. Use `npm run check` for Svelte/TypeScript diagnostics and `npm run build` to build for production. `npm run preview` serves the production build locally. The auto adapter needs a supported deployment platform, or can be replaced with an adapter for your target.
+
 ## What's here
 
 ```
@@ -25,7 +36,7 @@ src/lib/data/       exports from the ticket system
 - Words in the page, logic in `src/lib` (imported as `#lib/…`). A number that can be computed belongs in a component.
 - Every page starts with frontmatter: `title`, `owner`, `status`, `reviewed`.
 - A decision is never edited after it is accepted. A new record replaces it.
-- A page you add is signed: its frontmatter carries your `signature` and it ends with `<RenderStamp {signature} />`, so the desk knows who wrote it.
+- A page you add is signed: its frontmatter carries your `signature` and it ends with `<RenderStamp signature={metadata.signature} />`, so the desk knows who wrote it.
 
 ## Owners
 
