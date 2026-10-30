@@ -13,21 +13,21 @@ signature: 'MEGA.dev harness'
   export let signature;
 </script>
 
-#4471 combines different problems. Its one-fix summary and subject-only deduplication are not reliable guides to the actual cause. The table counts unique report IDs merged into #4471 in the 4 October export. The desk continues to receive and merge reports, so this is a snapshot, not a live count.
+#4471 combines different problems. Its one-fix summary and subject-only deduplication are not reliable guides to the actual cause. The table counts unique report IDs merged into #4471 in the 4 October export. Five reports are separated by symptom for investigation; this does not establish a separate cause. The desk continues to receive and merge reports, so this is a snapshot, not a live count.
 
 <Incident4471Split />
 
 ## Month/day parser
 
-The shared parser reads month first even for day-first tenants. Dates such as 7 April can become 4 July. Fix parsing using the tenant's date order and add ambiguous-date tests. The five reports the desk read as one-day moves remain counted here, as the export's classification specifies.
+The shared parser reads month first even for day-first tenants. Dates such as 7 April can become 4 July. Fix parsing using the tenant's date order and add ambiguous-date tests. This investigation split excludes the five reports read as one-day moves; the export's original classification includes them as parser reports. See [issue #1](https://github.com/grzehow/MegaDev/issues/1).
 
 ## Booking form hint
 
-The booking-v3 form tells people to enter MM/DD/YYYY even when their tenant uses day-first dates, while the form reads their entry in tenant order. Correct the hint to match the format accepted by the form and test both day-first and month-first tenants. This is not the shared parser defect.
+The booking-v3 form tells people to enter MM/DD/YYYY even when their tenant uses day-first dates, while the form reads their entry in tenant order. Correct the hint to match the format accepted by the form and test both day-first and month-first tenants. This is not the shared parser defect. See [issue #2](https://github.com/grzehow/MegaDev/issues/2).
 
 ## Reports read as one-day moves
 
-Five reports listed in `desk-notes.json` were read by the desk as one-day moves. The export's classification counts them where filed and footnotes the different reading; they remain in the parser count. Their symptoms merit follow-up, but the export does not establish a separate cause.
+Five reports listed in `desk-notes.json` were read by the desk as one-day moves. They are listed separately in the table for investigation rather than double-counted. The export classifies them as parser reports, and their symptoms do not establish a separate cause. See [issue #3](https://github.com/grzehow/MegaDev/issues/3).
 
 ## Triage
 
